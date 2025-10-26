@@ -1,6 +1,6 @@
 package org.citymst.algo;
 
-import org.citymst.Edge;
+import org.citymst.model.Edge;
 
 import java.util.ArrayList;
 import java.util.List;

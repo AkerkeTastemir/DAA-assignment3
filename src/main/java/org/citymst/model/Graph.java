@@ -1,4 +1,4 @@
-package org.citymst;
+package org.citymst.model;
 
 import java.util.List;
 

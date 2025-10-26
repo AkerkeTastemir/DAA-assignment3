@@ -1,4 +1,4 @@
-package org.citymst;
+package org.citymst.model;
 
 public class Edge {
     private final String from;

@@ -1,4 +1,4 @@
-package org.citymst;
+package org.citymst.algo;
 
 public class DSU {
     private final int[] parent;

@@ -1,8 +1,7 @@
 package org.citymst.algo;
 
-import org.citymst.DSU;
-import org.citymst.Edge;
-import org.citymst.Graph;
+import org.citymst.model.Edge;
+import org.citymst.model.Graph;
 
 import java.util.*;
 
