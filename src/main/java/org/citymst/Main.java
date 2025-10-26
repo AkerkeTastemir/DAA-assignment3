@@ -1,0 +1,7 @@
+package org.citymst;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("DAA Assignment 3 – MST Runner");
+    }
+}
