@@ -1,5 +1,7 @@
-package org.citymst;
+package org.citymst.io;
 
+import org.citymst.model.Edge;
+import org.citymst.model.Graph;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.IOException;
