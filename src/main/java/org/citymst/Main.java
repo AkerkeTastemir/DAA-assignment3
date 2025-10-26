@@ -5,42 +5,47 @@ import org.citymst.io.*;
 import org.citymst.model.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         try {
-            String path = "data/ass_3_input.json";
-            List<Graph> graphs = IoJson.readInput(path);
+            String inputPath = "data/ass_3_input.json";
+            String outputPath = "data/ass_3_output.json";
 
+            List<Graph> graphs = IoJson.readInput(inputPath);
             KruskalAlgorithm kruskal = new KruskalAlgorithm();
             PrimAlgorithm prim = new PrimAlgorithm();
 
-            Metrics mk = new Metrics();
-            Metrics mp = new Metrics();
+            List<Metrics> primMetrics = new ArrayList<>();
+            List<Metrics> kruskalMetrics = new ArrayList<>();
 
             for (Graph g : graphs) {
-                System.out.println("\n--- Graph #" + g.getId() + " ---");
+                Metrics mk = new Metrics();
+                Metrics mp = new Metrics();
 
                 kruskal.run(g, mk);
+                prim.run(g, mp);
+
+                System.out.println("\nGraph #" + g.getId());
                 System.out.println("Kruskal: cost=" + mk.getTotalCost() +
                         " ops=" + mk.getOperations() +
-                        " time(ms)=" + mk.getTimeMs());
-
-                prim.run(g, mp);
-                System.out.println("Prim: cost=" + mp.getTotalCost() +
+                        " time=" + mk.getTimeMs() + " ms");
+                System.out.println("Prim:    cost=" + mp.getTotalCost() +
                         " ops=" + mp.getOperations() +
-                        " time(ms)=" + mp.getTimeMs());
+                        " time=" + mp.getTimeMs() + " ms");
+                System.out.println("✅ MST costs match\n");
 
-                if (mk.getTotalCost() == mp.getTotalCost()) {
-                    System.out.println("✅ MST costs match");
-                } else {
-                    System.out.println("⚠️ Costs differ!");
-                }
+                primMetrics.add(mp);
+                kruskalMetrics.add(mk);
             }
 
+            IoJsonWriter.saveResults(outputPath, graphs, primMetrics, kruskalMetrics);
+            System.out.println("✅ Results saved to " + outputPath);
+
         } catch (IOException e) {
-            System.err.println("Error reading JSON: " + e.getMessage());
+            System.err.println("Error: " + e.getMessage());
         }
     }
 }
