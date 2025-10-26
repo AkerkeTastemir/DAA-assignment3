@@ -73,12 +73,12 @@ The results were automatically written to `ass_3_output.json`.
 
 ### Implementation Complexity
 - **Prim’s Algorithm:**
-  - Requires adjacency list and priority queue.
-  - Intuitive incremental growth of MST.
-  - Slightly more code due to heap management.
+    - Requires adjacency list and priority queue.
+    - Intuitive incremental growth of MST.
+    - Slightly more code due to heap management.
 - **Kruskal’s Algorithm:**
-  - Conceptually simpler: edge sorting + union checks.
-  - Depends on correct implementation of DSU (path compression & union by rank).
+    - Conceptually simpler: edge sorting + union checks.
+    - Depends on correct implementation of DSU (path compression & union by rank).
 
 ---
 
